@@ -11,3 +11,5 @@
  - **componentDidMount**
  - **componentDidUpdate**
  - **componentDidUnmount**
+
+## [Mock Service Worker](https://mswjs.io/docs/getting-started/install)

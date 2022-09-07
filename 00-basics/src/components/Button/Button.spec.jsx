@@ -12,22 +12,17 @@ describe('<Button />', () => {
     render(<Button onClick={backFn} text="back" />);
     render(<Button onClick={nextFn} text="next" />);
 
-    expect.assertions(7);
+    expect.assertions(6);
 
-    const buttons = screen.getAllByRole('button', { name: /back|next/i });
+    const [back, next] = screen.getAllByRole('button', { name: /back|next/i });
 
-    expect(buttons.length).toBe(2);
+    expect(back).toBeInTheDocument();
+    expect(back).toHaveClass('button');
+    expect(back).toHaveTextContent('back');
 
-    const backButton = buttons[0];
-    const nextButton = buttons[1];
-
-    expect(backButton).toBeInTheDocument();
-    expect(backButton).toHaveClass('button');
-    expect(backButton).toHaveTextContent('back');
-
-    expect(nextButton).toBeInTheDocument();
-    expect(nextButton).toHaveClass('button');
-    expect(nextButton).toHaveTextContent('next');
+    expect(next).toBeInTheDocument();
+    expect(next).toHaveClass('button');
+    expect(next).toHaveTextContent('next');
   });
 
   it('should call function on button click', () => {
@@ -37,19 +32,14 @@ describe('<Button />', () => {
     render(<Button text="back" onClick={backFn} />);
     render(<Button text="next" onClick={nextFn} />);
 
-    expect.assertions(3);
+    expect.assertions(2);
 
-    const buttons = screen.getAllByRole('button', { name: /back|next/i });
+    const [back, next] = screen.getAllByRole('button', { name: /back|next/i });
 
-    expect(buttons.length).toBe(2);
-
-    const backButton = buttons[0];
-    const nextButton = buttons[1];
-
-    fireEvent.click(backButton);
+    fireEvent.click(back);
     expect(backFn).toHaveBeenCalled();
 
-    userEvent.click(nextButton);
+    userEvent.click(next);
     expect(nextFn).toHaveBeenCalled();
   });
 

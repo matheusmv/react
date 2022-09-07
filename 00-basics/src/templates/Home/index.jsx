@@ -44,8 +44,6 @@ function Home() {
 
     setPage(newPage);
     setPosts(allPosts.slice(newPage, newPage + postsPerPage));
-
-    window.scroll({ top: 0, left: 0, behavior: 'auto' });
   };
 
   const nextPosts = () => {
@@ -55,8 +53,6 @@ function Home() {
 
     setPage(newPage);
     setPosts(allPosts.slice(newPage, newPage + postsPerPage));
-
-    window.scroll({ top: 0, left: 0, behavior: 'auto' });
   };
 
   useEffect(() => {
