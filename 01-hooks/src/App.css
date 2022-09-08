@@ -63,3 +63,10 @@
 .hooks-container > div {
   width: 350px;
 }
+
+.todos-container {
+  max-height: 250px;
+  width: 350px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}

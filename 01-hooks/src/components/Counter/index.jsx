@@ -1,8 +1,17 @@
 import P from 'prop-types';
 
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import '../../App.css';
+
+const Button = React.memo(function Button({ text, onClick }) {
+  return <button onClick={onClick}>{text}</button>;
+});
+
+Button.propTypes = {
+  text: P.string.isRequired,
+  onClick: P.func.isRequired,
+};
 
 export const Counter = ({ initialCount }) => {
   const [counter, setCounter] = useState(initialCount);
@@ -11,13 +20,21 @@ export const Counter = ({ initialCount }) => {
     document.title = `You clicked ${counter} times`;
   }, [counter]);
 
-  const incrementCounter = () => {
+  const resetCounter = useCallback(() => {
+    setCounter(initialCount);
+  }, [initialCount]);
+
+  const incrementCounter = useCallback(() => {
     setCounter((count) => count + 1);
-  };
+  }, []);
+
+  const decrementCounter = useCallback(() => {
+    setCounter((count) => count - 1);
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      incrementCounter();
+      setCounter((count) => count + 1);
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -27,10 +44,10 @@ export const Counter = ({ initialCount }) => {
     <div className="App">
       <header className="App-header">
         <div className="counter-container">
-          <h4 onClick={incrementCounter}>Counter: {counter}</h4>
-          <button onClick={() => setCounter(initialCount)}>Reset</button>
-          <button onClick={() => setCounter((prev) => prev + 1)}>+</button>
-          <button onClick={() => setCounter((prev) => prev - 1)}>-</button>
+          <h4 onClick={() => setCounter(counter + 1)}>Counter: {counter}</h4>
+          <Button onClick={resetCounter} text="Reset" />
+          <Button onClick={incrementCounter} text="+" />
+          <Button onClick={decrementCounter} text="-" />
         </div>
       </header>
     </div>

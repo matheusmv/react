@@ -10,8 +10,6 @@
 
 ## [useState](https://reactjs.org/docs/hooks-state.html)
 
-    Returns a stateful value, and a function to update it.
-
  - the only argument to **useState** is the initial state.
 
   ```jsx
@@ -30,11 +28,6 @@
   ```
 
 ## [useEffect](https://reactjs.org/docs/hooks-effect.html)
-
-    Adds the ability to perform side effects (data fetching, subscriptions or manual
-    DOM manipulation) from a function component. It serves the same purpose as
-    componentDidMount, componentDidUpdate and componentDidUnmount in React classes,
-    but unified into a single API.
 
  - by default, React runs the effects after every render - **including the first
  render**
@@ -77,4 +70,52 @@
       return () =>
         document.querySelector('header')?.removeEventListener('click', eventFn);
     }, []);
+    ```
+
+## [useCallback](https://reactjs.org/docs/hooks-reference.html#usecallback)
+
+ - useCallback to prevent a component from re-rendering unless its props have changed.
+ - "caching" a value so that it does not need to be recalculated. This allows us to
+ isolate resource intensive functions so that they will not automatically run on every
+ render.
+ - only runs when one of its dependencies update.
+ - is usually used in optimization.
+
+    ```jsx
+    const Button = React.memo(function Button({ text, onClick }) {
+      return <button onClick={onClick}>{text}</button>;
+    });
+
+    export const Counter = ({ initialCount }) => {
+      const [counter, setCounter] = useState(initialCount);
+
+      const resetCounter = useCallback(() => {
+        setCounter(initialCount);
+      }, [initialCount]);
+
+      const incrementCounter = useCallback(() => {
+        setCounter((count) => count + 1);
+      }, []);
+
+      const decrementCounter = useCallback(() => {
+        setCounter((count) => count - 1);
+      }, []);
+
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          setCounter((count) => count + 1);
+        }, 1000);
+
+        return () => clearTimeout(timer);
+      });
+
+      return (
+        <div className="counter-container">
+          <h4 onClick={() => setCounter(counter + 1)}>Counter: {counter}</h4>
+          <Button onClick={resetCounter} text="Reset" />
+          <Button onClick={incrementCounter} text="+" />
+          <Button onClick={decrementCounter} text="-" />
+        </div>
+      );
+    };
     ```
