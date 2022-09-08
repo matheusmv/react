@@ -1,34 +1,12 @@
-import { useState } from 'react';
-
 import './App.css';
-
-import logo from './logo.svg';
+import { Counter } from './components/Counter';
+import { Logo } from './components/Logo';
 
 function App() {
-  const [reverseRotation, setReverseRotation] = useState(false);
-  const [counter, setCounter] = useState(0);
-
-  const toggleRotation = () => {
-    setReverseRotation((reverse) => !reverse);
-  };
-
-  const incrementCounter = () => {
-    setCounter((counter) => counter + 1);
-  };
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img
-          src={logo}
-          className={reverseRotation ? 'App-logo reverse' : 'App-logo'}
-          alt="logo"
-        />
-        <h4 onClick={incrementCounter}>Counter: {counter}</h4>
-        <button onClick={toggleRotation}>
-          {reverseRotation ? 'clockwise' : 'anticlockwise'}
-        </button>
-      </header>
+    <div className="hooks-container">
+      <Logo />
+      <Counter initialCount={0} />
     </div>
   );
 }

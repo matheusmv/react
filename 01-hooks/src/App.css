@@ -49,3 +49,17 @@
     transform: rotate(0deg);
   }
 }
+
+.hooks-container {
+  background-color: #61dafb;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 30px;
+}
+
+.hooks-container > div {
+  width: 350px;
+}
