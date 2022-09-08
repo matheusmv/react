@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import Todos from '../Todos';
 
 export const TodoList = () => {
@@ -17,7 +17,12 @@ export const TodoList = () => {
     <div className="App">
       <header className="App-header">
         <div className="todo-list-container">
-          <Todos todos={todos} addTodo={addTodo} />
+          {useMemo(
+            () => (
+              <Todos todos={todos} addTodo={addTodo} />
+            ),
+            [todos, addTodo],
+          )}
           <div>
             <h2>Count: {count}</h2>
             <button onClick={incrementCount}>+</button>

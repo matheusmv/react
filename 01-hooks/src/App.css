@@ -64,7 +64,8 @@
   width: 350px;
 }
 
-.todos-container {
+.todos-container,
+.posts-container {
   max-height: 250px;
   width: 350px;
   overflow-y: scroll;

@@ -1,7 +1,5 @@
 import P from 'prop-types';
 
-import { memo } from 'react';
-
 const Todos = ({ todos, addTodo }) => {
   return (
     <>
@@ -21,4 +19,4 @@ Todos.propTypes = {
   addTodo: P.func.isRequired,
 };
 
-export default memo(Todos);
+export default Todos;

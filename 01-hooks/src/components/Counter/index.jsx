@@ -1,12 +1,12 @@
 import P from 'prop-types';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import '../../App.css';
 
-const Button = React.memo(function Button({ text, onClick }) {
+const Button = ({ text, onClick }) => {
   return <button onClick={onClick}>{text}</button>;
-});
+};
 
 Button.propTypes = {
   text: P.string.isRequired,
@@ -32,6 +32,17 @@ export const Counter = ({ initialCount }) => {
     setCounter((count) => count - 1);
   }, []);
 
+  const buttons = useMemo(
+    () => (
+      <>
+        <Button onClick={resetCounter} text="Reset" />
+        <Button onClick={incrementCounter} text="+" />
+        <Button onClick={decrementCounter} text="-" />
+      </>
+    ),
+    [resetCounter, incrementCounter, decrementCounter],
+  );
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setCounter((count) => count + 1);
@@ -45,9 +56,7 @@ export const Counter = ({ initialCount }) => {
       <header className="App-header">
         <div className="counter-container">
           <h4 onClick={() => setCounter(counter + 1)}>Counter: {counter}</h4>
-          <Button onClick={resetCounter} text="Reset" />
-          <Button onClick={incrementCounter} text="+" />
-          <Button onClick={decrementCounter} text="-" />
+          {buttons}
         </div>
       </header>
     </div>
