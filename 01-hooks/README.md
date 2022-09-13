@@ -38,7 +38,7 @@
  - just like you can use the State Hook more than once, you can also use several
  effects. This lets us separate unrelated logic into different effects:
 
- - will run every time the component updates
+ - run every time the component updates
 
     ```jsx
     useEffect(() => {
@@ -46,7 +46,7 @@
     });
     ```
 
- - will run only on component creation
+ - run only on component creation
 
     ```jsx
     useEffect(() => {
@@ -54,7 +54,7 @@
     }, []);
     ```
 
- - will be executed every time the component state passed as an argument update
+ - run every time the argument update
 
     ```jsx
     useEffect(() => {
