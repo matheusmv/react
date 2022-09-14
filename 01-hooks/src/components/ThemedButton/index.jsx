@@ -1,9 +1,9 @@
 import P from 'prop-types';
 import { useContext } from 'react';
-import { ThemeContext } from '../../App';
+import { ColorTheme } from '../../contexts/ColorTheme';
 
 export const ThemedButton = ({ message }) => {
-  const theme = useContext(ThemeContext);
+  const theme = useContext(ColorTheme);
 
   return (
     <div className="App">

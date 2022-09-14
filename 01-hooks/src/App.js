@@ -1,4 +1,3 @@
-import { createContext } from 'react';
 import './App.css';
 import { Counter } from './components/Counter';
 import { Input } from './components/Input';
@@ -7,22 +6,11 @@ import { Posts } from './components/Posts';
 import { ThemedButton } from './components/ThemedButton';
 import { TodoList } from './components/TodoList';
 
-const themes = {
-  light: {
-    foreground: '#000000',
-    background: '#eeeeee',
-  },
-  dark: {
-    foreground: '#ffffff',
-    background: '#222222',
-  },
-};
-
-export const ThemeContext = createContext(themes.light);
+import { ColorTheme, themes } from './contexts/ColorTheme';
 
 function App() {
   return (
-    <ThemeContext.Provider value={themes.dark}>
+    <ColorTheme.Provider value={themes.dark}>
       <div className="hooks-container">
         <Logo />
         <Counter initialCount={0} />
@@ -31,7 +19,7 @@ function App() {
         <Input />
         <ThemedButton message={'click'} />
       </div>
-    </ThemeContext.Provider>
+    </ColorTheme.Provider>
   );
 }
 
