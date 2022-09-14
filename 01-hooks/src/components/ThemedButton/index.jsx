@@ -9,7 +9,9 @@ export const ThemedButton = ({ message }) => {
     contextState: {
       themes: { dark },
       pageTitle,
+      counter,
     },
+    setContextState,
   } = globalContext;
 
   return (
@@ -17,8 +19,12 @@ export const ThemedButton = ({ message }) => {
       <header className="App-header">
         <div>
           <h1>{pageTitle}</h1>
+          <p>{counter}</p>
         </div>
         <button
+          onClick={() =>
+            setContextState((s) => ({ ...s, counter: s.counter + 1 }))
+          }
           style={{
             background: dark.background,
             color: dark.foreground,

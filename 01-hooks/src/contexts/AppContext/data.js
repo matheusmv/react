@@ -10,4 +10,5 @@ export const globalState = {
     },
   },
   pageTitle: 'Title from globalState',
+  counter: 0,
 };
