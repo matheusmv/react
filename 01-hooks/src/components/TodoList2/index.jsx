@@ -48,8 +48,7 @@ export const TodoList2 = () => {
                   checked={todo.complete}
                   onChange={() => handleComplete(todo)}
                 />
-                {todo.title}
-                {todo.complete ? ' DONE' : ''}
+                {todo.complete ? `${todo.title} DONE` : `${todo.title}`}
               </label>
             </div>
           ))}

@@ -12,20 +12,20 @@
 
  - the only argument to **useState** is the initial state.
 
-  ```jsx
-  function Counter({initialCount}) {
-    const [count, setCount] = useState(initialCount);
+   ```jsx
+   function Counter({initialCount}) {
+     const [count, setCount] = useState(initialCount);
 
-    return (
-      <>
-        Count: {count}
-        <button onClick={() => setCount(initialCount)}>Reset</button>
-        <button onClick={() => setCount((prev) => prev + 1)}>+</button>
-        <button onClick={() => setCount((prev) => prev - 1)}>-</button>
-      </>
-    );
-  }
-  ```
+     return (
+       <>
+         Count: {count}
+         <button onClick={() => setCount(initialCount)}>Reset</button>
+         <button onClick={() => setCount((prev) => prev + 1)}>+</button>
+         <button onClick={() => setCount((prev) => prev - 1)}>-</button>
+       </>
+     );
+   }
+   ```
 
 ## [useEffect](https://reactjs.org/docs/hooks-effect.html)
 
@@ -180,6 +180,9 @@
 
 ## [useRef](https://reactjs.org/docs/hooks-reference.html#useref)
 
+ - returns a mutable ref object whose **.current** property is initialized to the passed
+ argument. The returned object will persist for the full lifetime of the component.
+
  - it can be used to:
      - persist values between renders.
      - store a mutable value that does not cause a re-render when updated.
@@ -191,4 +194,109 @@
  - it can be used together with the useState to share state between deeply nested
  components more easily than with useState alone.
 
+   ```jsx
+   const globalState = {
+     themes: {
+       light: {
+         foreground: '#000000',
+         background: '#eeeeee',
+       },
+       dark: {
+         foreground: '#ffffff',
+         background: '#222222',
+       },
+     },
+     pageTitle: 'Title from globalState',
+     counter: 0,
+   };
+
+   export const GlobalContext = createContext();
+
+   export const AppContext = ({ children }) => {
+     const [contextState, setContextState] = useState(globalState);
+
+     return (
+       <GlobalContext.Provider value={{ contextState, setContextState }}>
+         {children}
+       </GlobalContext.Provider>
+     );
+   };
+   ```
+
+   ```jsx
+   export default function App() {
+     return (
+       <AppContext>
+         <Post />
+       </AppContext>
+     );
+   }
+   ```
+
+   ```jsx
+   export const Post = () => {
+     const globalContext = useContext(GlobalContext);
+
+     const {
+       contextState: {
+         themes: { dark },
+         pageTitle,
+         counter,
+       },
+       setContextState,
+     } = globalContext;
+
+     return (
+       <>
+         <div>
+           <h1>{pageTitle}</h1>
+           <p>{counter}</p>
+         </div>
+         <button
+           onClick={() =>
+             setContextState((s) => ({ ...s, counter: s.counter + 1 }))
+           }
+           style={{
+             background: dark.background,
+             color: dark.foreground,
+           }}
+         >
+           {'click'}
+         </button>
+       </>
+     );
+   };
+   ```
+
 ## [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
+
+ - userReducer is usually preferable to useState when you have complex state logic that
+ involves multiple sub-values or when the next state depends on the previous one.
+ - optimize performance for components that trigger deep updates because you can pass
+ dispatch down instead of callbacks.
+
+   ```jsx
+   function reducer(state, action) {
+     switch (action.type) {
+     case 'action-1':
+       // perform action-1 logic
+       return { ...state, state.count + action.value };
+     case 'action-2':
+       // perform action-2 logic
+       return { ...state, state.count - action.value };
+     // ...
+     default:
+       return state;
+     }
+   }
+
+   const [state, dispatch] = useReducer(reducer, initialState);
+
+   const performActionOne = (num) => {
+     dispatch({ type: 'action-1', value: num });
+   };
+
+   const performActionTwo = (num) => {
+     dispatch({ type: 'action-2', value: num });
+   };
+   ```
