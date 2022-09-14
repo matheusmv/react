@@ -65,9 +65,11 @@
 }
 
 .todos-container,
-.posts-container {
+.posts-container,
+.text-container {
   max-height: 250px;
   width: 350px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
+  word-wrap: break-word;
 }

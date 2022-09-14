@@ -177,3 +177,10 @@
       );
     };
     ```
+
+## [useRef](https://reactjs.org/docs/hooks-reference.html#useref)
+
+ - it can be used to:
+     - persist values between renders.
+     - store a mutable value that does not cause a re-render when updated.
+     - access a DOM element directly.
