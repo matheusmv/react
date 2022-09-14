@@ -184,3 +184,9 @@
      - persist values between renders.
      - store a mutable value that does not cause a re-render when updated.
      - access a DOM element directly.
+
+## [useContext](https://reactjs.org/docs/hooks-reference.html#usecontext)
+
+ - is a way to manage state globally.
+ - it can be used together with the useState to share state between deeply nested
+ components more easily than with useState alone.
