@@ -5,6 +5,7 @@ import { Logo } from './components/Logo';
 import { Posts } from './components/Posts';
 import { ThemedButton } from './components/ThemedButton';
 import { TodoList } from './components/TodoList';
+import { TodoList2 } from './components/TodoList2';
 import { AppContext } from './contexts/AppContext';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Posts />
         <Input />
         <ThemedButton message={'click'} />
+        <TodoList2 />
       </div>
     </AppContext>
   );

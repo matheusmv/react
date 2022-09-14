@@ -190,3 +190,5 @@
  - is a way to manage state globally.
  - it can be used together with the useState to share state between deeply nested
  components more easily than with useState alone.
+
+## [useReducer](https://reactjs.org/docs/hooks-reference.html#usereducer)
