@@ -5,12 +5,11 @@ import { Logo } from './components/Logo';
 import { Posts } from './components/Posts';
 import { ThemedButton } from './components/ThemedButton';
 import { TodoList } from './components/TodoList';
-
-import { ColorTheme, themes } from './contexts/ColorTheme';
+import { AppContext } from './contexts/AppContext';
 
 function App() {
   return (
-    <ColorTheme.Provider value={themes.dark}>
+    <AppContext>
       <div className="hooks-container">
         <Logo />
         <Counter initialCount={0} />
@@ -19,7 +18,7 @@ function App() {
         <Input />
         <ThemedButton message={'click'} />
       </div>
-    </ColorTheme.Provider>
+    </AppContext>
   );
 }
 
