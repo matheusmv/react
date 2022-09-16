@@ -42,7 +42,7 @@ export const ExampleUseReducer = () => {
       <h1>Todos</h1>
       <div className="card--content">
         {todos.map((todo) => (
-          <div key={todo.id}>
+          <div key={todo.id} className="card--content">
             <Input
               inputType={'checkbox'}
               inputChecked={todo.complete}

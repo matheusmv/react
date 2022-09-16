@@ -23,7 +23,9 @@ export const ExampleUseRef = () => {
 
   return (
     <div className="component-card">
-      <p>Previous input: {previousInputValue.current}</p>
+      <p className="card--content">
+        Previous input: {previousInputValue.current}
+      </p>
       <Input
         inputType={'text'}
         inputRef={inputElement}
@@ -31,7 +33,7 @@ export const ExampleUseRef = () => {
         onChangeFn={(e) => setInputValue(e.target.value)}
       />
       <Button clickFun={focusInput} text={'Focus Input'} />
-      <p>Render Count: {count.current}</p>
+      <p className="card--content">Render Count: {count.current}</p>
     </div>
   );
 };

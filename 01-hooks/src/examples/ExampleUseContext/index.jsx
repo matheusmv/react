@@ -19,8 +19,8 @@ export const ExampleUseContext = ({ message }) => {
 
   return (
     <div className="component-card">
-      <h1>{pageTitle}</h1>
-      <p>{counter}</p>
+      <h1 className="card--content">{pageTitle}</h1>
+      <p className="card--content">{counter}</p>
       <Button
         clickFun={() =>
           setContextState((s) => ({ ...s, counter: s.counter + 1 }))

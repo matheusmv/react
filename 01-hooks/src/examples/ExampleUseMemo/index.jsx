@@ -23,7 +23,7 @@ export const ExampleUseMemo = () => {
         ),
         [todos, addTodo],
       )}
-      <p>Count: {count}</p>
+      <p className="card--content">Count: {count}</p>
       <Button clickFun={incrementCount} text={'+'} />
     </div>
   );

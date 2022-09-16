@@ -2,6 +2,8 @@ import P from 'prop-types';
 
 import { createContext, useContext, useReducer } from 'react';
 
+import { Button } from '../../components/Button';
+
 const posts2State = {
   selectedTitle: 0,
   titles: ['Title 0', 'Title 1', 'Title 2', 'Title 3', 'Title 4', 'Title 5'],
@@ -52,10 +54,8 @@ const Title = () => {
 
   return (
     <div className="component-card">
-      <h1>{titles[selectedTitle]}</h1>
-      <button className="card--button" onClick={changeTitle}>
-        {'change title'}
-      </button>
+      <h1 className="card--content">{titles[selectedTitle]}</h1>
+      <Button clickFun={changeTitle} text={'change title'} />
     </div>
   );
 };

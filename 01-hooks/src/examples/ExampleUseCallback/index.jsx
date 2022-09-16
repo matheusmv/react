@@ -44,7 +44,9 @@ export const ExampleUseCallback = ({ initialCount }) => {
 
   return (
     <div className="component-card">
-      <h4 onClick={() => setCounter(counter + 1)}>Counter: {counter}</h4>
+      <h4 className="card--content" onClick={() => setCounter(counter + 1)}>
+        Counter: {counter}
+      </h4>
       {buttons}
     </div>
   );
