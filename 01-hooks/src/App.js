@@ -3,6 +3,7 @@ import { Counter } from './components/Counter';
 import { Input } from './components/Input';
 import { Logo } from './components/Logo';
 import { Posts } from './components/Posts';
+import { Posts2 } from './components/Posts2';
 import { ThemedButton } from './components/ThemedButton';
 import { TodoList } from './components/TodoList';
 import { TodoList2 } from './components/TodoList2';
@@ -19,6 +20,7 @@ function App() {
         <Input />
         <ThemedButton message={'click'} />
         <TodoList2 />
+        <Posts2 />
       </div>
     </AppContext>
   );
