@@ -1,5 +1,7 @@
 import { useReducer } from 'react';
 
+import { Input } from '../../components/Input';
+
 const initialTodos = [
   {
     id: 1,
@@ -28,7 +30,7 @@ const reducer = (state, action) => {
   }
 };
 
-export const TodoList2 = () => {
+export const ExampleUseReducer = () => {
   const [todos, dispatch] = useReducer(reducer, initialTodos);
 
   const handleComplete = (todo) => {
@@ -36,24 +38,21 @@ export const TodoList2 = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Todos</h1>
-        <div className="todo-list-container">
-          {todos.map((todo) => (
-            <div key={todo.id}>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={todo.complete}
-                  onChange={() => handleComplete(todo)}
-                />
-                {todo.complete ? `${todo.title} DONE` : `${todo.title}`}
-              </label>
-            </div>
-          ))}
-        </div>
-      </header>
+    <div className="component-card">
+      <h1>Todos</h1>
+      <div className="card--content">
+        {todos.map((todo) => (
+          <div key={todo.id}>
+            <Input
+              inputType={'checkbox'}
+              inputChecked={todo.complete}
+              onChangeFn={() => handleComplete(todo)}
+              inputStyle={{ width: '15px', height: '15px' }}
+            />
+            {todo.complete ? ` ${todo.title} DONE` : ` ${todo.title}`}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

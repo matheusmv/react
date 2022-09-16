@@ -1,28 +1,30 @@
-import './App.css';
-import { Counter } from './components/Counter';
-import { Input } from './components/Input';
-import { Logo } from './components/Logo';
-import { Posts } from './components/Posts';
-import { Posts2 } from './components/Posts2';
-import { ThemedButton } from './components/ThemedButton';
-import { TodoList } from './components/TodoList';
-import { TodoList2 } from './components/TodoList2';
+import { ExampleUseCallback } from './examples/ExampleUseCallback';
+import { ExampleUseContext } from './examples/ExampleUseContext';
+import { ExampleUseContextAndUseReducer } from './examples/ExampleUseContextAndUseReducer';
+import { ExampleUseEffectAndUseMemo } from './examples/ExampleUseEffectAndUseMemo';
+import { ExampleUseMemo } from './examples/ExampleUseMemo';
+import { ExampleUseReducer } from './examples/ExampleUseReducer';
+import { ExampleUseRef } from './examples/ExampleUseRef';
+import { ExampleUseStateAndUseEffect } from './examples/ExampleUseStateAndUseEffect';
+
 import { AppContext } from './contexts/AppContext';
+
+import './index.css';
 
 function App() {
   return (
-    <AppContext>
-      <div className="hooks-container">
-        <Logo />
-        <Counter initialCount={0} />
-        <TodoList />
-        <Posts />
-        <Input />
-        <ThemedButton message={'click'} />
-        <TodoList2 />
-        <Posts2 />
-      </div>
-    </AppContext>
+    <div className="examples-container">
+      <AppContext>
+        <ExampleUseStateAndUseEffect />
+        <ExampleUseCallback initialCount={0} />
+        <ExampleUseMemo />
+        <ExampleUseEffectAndUseMemo />
+        <ExampleUseRef />
+        <ExampleUseContext message={'click'} />
+        <ExampleUseReducer />
+        <ExampleUseContextAndUseReducer />
+      </AppContext>
+    </div>
   );
 }
 

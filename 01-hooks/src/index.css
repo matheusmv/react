@@ -1,13 +1,96 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --background-color-0: #61dafb;
+  --background-color-1: #282c34;
+  --background-color-2: #343c4b;
+  --foreground-color-0: #61dafb42;
+  --background-0-text-color-0: #282c34;
+  --background-1-text-color-0: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background-color-0);
+  line-height: 1.5;
+  font-size: 1.25rem;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.logo {
+  height: 24vmin;
+  width: 12rem;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+
+  .reverse {
+    animation: logo-spin-reverse infinite 20s linear;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes logo-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.examples-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.component-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: var(--background-color-1);
+  color: var(--background-1-text-color-0);
+  height: 32rem;
+  width: 12rem auto;
+
+  text-align: center;
+}
+
+.card--content {
+  max-height: 300px;
+  width: auto;
+
+  padding: 5px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  word-wrap: break-word;
+}
+
+.card--title {
+}
+
+.card--text {
 }

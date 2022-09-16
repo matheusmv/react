@@ -2,18 +2,9 @@ import P from 'prop-types';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import '../../App.css';
+import { Button } from '../../components/Button';
 
-const Button = ({ text, onClick }) => {
-  return <button onClick={onClick}>{text}</button>;
-};
-
-Button.propTypes = {
-  text: P.string.isRequired,
-  onClick: P.func.isRequired,
-};
-
-export const Counter = ({ initialCount }) => {
+export const ExampleUseCallback = ({ initialCount }) => {
   const [counter, setCounter] = useState(initialCount);
 
   useEffect(() => {
@@ -35,9 +26,9 @@ export const Counter = ({ initialCount }) => {
   const buttons = useMemo(
     () => (
       <>
-        <Button onClick={resetCounter} text="Reset" />
-        <Button onClick={incrementCounter} text="+" />
-        <Button onClick={decrementCounter} text="-" />
+        <Button clickFun={resetCounter} text="Reset" />
+        <Button clickFun={incrementCounter} text="+" />
+        <Button clickFun={decrementCounter} text="-" />
       </>
     ),
     [resetCounter, incrementCounter, decrementCounter],
@@ -52,17 +43,13 @@ export const Counter = ({ initialCount }) => {
   });
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="counter-container">
-          <h4 onClick={() => setCounter(counter + 1)}>Counter: {counter}</h4>
-          {buttons}
-        </div>
-      </header>
+    <div className="component-card">
+      <h4 onClick={() => setCounter(counter + 1)}>Counter: {counter}</h4>
+      {buttons}
     </div>
   );
 };
 
-Counter.propTypes = {
+ExampleUseCallback.propTypes = {
   initialCount: P.number.isRequired,
 };

@@ -1,0 +1,27 @@
+.card--button {
+  align-items: center;
+  background-color: var(--background-color-2);
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: var(--foreground-color-0) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: var(--background-1-text-color-0);
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-size: 100%;
+  margin: 0;
+  padding: 10px 21px;
+  text-align: center;
+  text-transform: none;
+  transition: color 0.13s ease-in-out, background 0.13s ease-in-out,
+    opacity 0.13s ease-in-out, box-shadow 0.13s ease-in-out;
+  user-select: none;
+  touch-action: manipulation;
+}
+
+.card--button:hover {
+  background-color: var(--background-color-0);
+  color: var(--background-color-1);
+}

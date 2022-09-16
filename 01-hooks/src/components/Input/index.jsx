@@ -1,40 +1,36 @@
-import { useEffect, useRef, useState } from 'react';
+import P from 'prop-types';
 
-export const Input = () => {
-  const [inputValue, setInputValue] = useState('');
-  const previousInputValue = useRef('');
-  const inputElement = useRef(null);
-  const count = useRef(0);
+import './styles.css';
 
-  const focusInput = () => {
-    inputElement.current.focus();
-  };
-
-  useEffect(() => {
-    previousInputValue.current = inputValue;
-  }, [inputValue]);
-
-  useEffect(() => {
-    count.current++;
-  });
-
+export function Input({
+  inputType,
+  inputPlaceholder,
+  inputValue,
+  inputChecked,
+  onChangeFn,
+  inputRef,
+  inputStyle,
+}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <div className="text-container">
-          <p>Previous input: {previousInputValue.current}</p>
-        </div>
-        <input
-          type="text"
-          ref={inputElement}
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <div className="button-container">
-          <button onClick={focusInput}>Focus Input</button>
-        </div>
-        <h1>Render Count: {count.current}</h1>
-      </header>
-    </div>
+    <input
+      className="card--input"
+      type={inputType}
+      value={inputValue}
+      checked={inputChecked}
+      placeholder={inputPlaceholder}
+      onChange={onChangeFn}
+      ref={inputRef}
+      style={inputStyle}
+    />
   );
+}
+
+Input.propTypes = {
+  inputType: P.string,
+  inputPlaceholder: P.string,
+  inputValue: P.any,
+  onChangeFn: P.func,
+  inputRef: P.object,
+  inputChecked: P.bool,
+  inputStyle: P.object,
 };

@@ -1,15 +1,17 @@
 import P from 'prop-types';
 
+import { Button } from '../Button';
+
 const Todos = ({ todos, addTodo }) => {
   return (
     <>
       <h2>My Todos</h2>
-      <div className="todos-container">
+      <div className="card--content">
         {todos.map((todo, index) => {
           return <p key={index}>{todo}</p>;
         })}
       </div>
-      <button onClick={addTodo}>Add Todo</button>
+      <Button clickFun={addTodo} text={'Add Todo'} />
     </>
   );
 };

@@ -1,0 +1,16 @@
+.card--input {
+  background-color: var(--background-color-2);
+  color: var(--background-1-text-color-0);
+
+  height: 40px;
+  max-width: 400px;
+  width: 90%;
+
+  padding: 0 10px;
+
+  font-size: inherit;
+
+  border-radius: 10px;
+
+  border: none;
+}

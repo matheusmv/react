@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import '../../App.css';
+import { Button } from '../../components/Button';
 
 import logo from '../../logo.svg';
 
@@ -8,7 +8,7 @@ const eventFn = () => {
   console.log('header click');
 };
 
-export const Logo = () => {
+export const ExampleUseStateAndUseEffect = () => {
   const [reverseRotation, setReverseRotation] = useState(false);
 
   const toggleRotation = () => {
@@ -33,17 +33,16 @@ export const Logo = () => {
   }, [reverseRotation]);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img
-          src={logo}
-          className={reverseRotation ? 'App-logo reverse' : 'App-logo'}
-          alt="logo"
-        />
-        <button onClick={toggleRotation}>
-          {reverseRotation ? 'clockwise' : 'anticlockwise'}
-        </button>
-      </header>
+    <div className="component-card">
+      <img
+        src={logo}
+        className={reverseRotation ? 'logo reverse' : 'logo'}
+        alt="logo"
+      />
+      <Button
+        clickFun={toggleRotation}
+        text={reverseRotation ? 'clockwise' : 'anticlockwise'}
+      />
     </div>
   );
 };

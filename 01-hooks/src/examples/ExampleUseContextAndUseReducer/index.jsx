@@ -51,16 +51,16 @@ const Title = () => {
   } = context;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1 className="posts-container">{titles[selectedTitle]}</h1>
-        <button onClick={changeTitle}>{'change title'}</button>
-      </header>
+    <div className="component-card">
+      <h1>{titles[selectedTitle]}</h1>
+      <button className="card--button" onClick={changeTitle}>
+        {'change title'}
+      </button>
     </div>
   );
 };
 
-export const Posts2 = () => {
+export const ExampleUseContextAndUseReducer = () => {
   return (
     <Post2sAppContext>
       <Title />
