@@ -1,3 +1,4 @@
+import { ExampleCustomHookV1 } from './examples/ExampleCustomHookV1';
 import { ExampleUseCallback } from './examples/ExampleUseCallback';
 import { ExampleUseContext } from './examples/ExampleUseContext';
 import { ExampleUseContextAndUseReducer } from './examples/ExampleUseContextAndUseReducer';
@@ -23,6 +24,7 @@ function App() {
         <ExampleUseContext message={'click'} />
         <ExampleUseReducer />
         <ExampleUseContextAndUseReducer />
+        <ExampleCustomHookV1 />
       </AppContext>
     </div>
   );
